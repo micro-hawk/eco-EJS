@@ -7,8 +7,11 @@ mainController.homePage = (req, res) => {
 }
 
 mainController.homePost = (req, res) => {
-    // console.log('Hello worlds')
-    res.send("Hello WOrld")
+    let searchItem = req.body.navSearch
+    const matches = dataJson.filter(s => s.name.toLocaleLowerCase().includes(searchItem.toLocaleLowerCase()))
+    res.render('home', {
+        data : matches
+    })
 }
 
 
